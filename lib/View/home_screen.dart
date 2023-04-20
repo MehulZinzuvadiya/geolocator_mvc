@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        title: Text("Find Me"),
+        title: const Text("Find Me"),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -40,15 +40,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     locationController.lan.value = position.longitude;
                     locationController.lat.value = position.latitude;
                   },
-                  child: Text("Locate")),
-              SizedBox(
+                  child: const Text("Locate")),
+              const SizedBox(
                 height: 20,
               ),
               Obx(() => Text(
                     "Lat=${locationController.lat}",
                     style: GoogleFonts.lato(fontSize: 24),
                   )),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Obx(
@@ -71,10 +71,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     "Address",
                     style: GoogleFonts.lato(fontSize: 20),
                   )),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Obx(() => Text("${locationController.placeList}")),
+              Obx(() => Text("${locationController.placeList[0]}")),
+              SizedBox(height: 20,),
+              ElevatedButton(
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: Colors.orange),
+                  onPressed: () {
+                    Get.toNamed('map');
+                  },
+                  child: const Text("Go On Map"))
             ],
           ),
         ),
